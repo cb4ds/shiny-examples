@@ -9,7 +9,7 @@ shinyApp(
           fileInput("file", "File input:"),
           textInput("txt", "Text input:", "general"),
           sliderInput("slider", "Slider input:", 1, 100, 30),
-          tags$h5("Deafult actionButton:"),
+          tags$h5("Default actionButton:"),
           actionButton("action", "Search"),
 
           tags$h5("actionButton with CSS class:"),
@@ -28,13 +28,13 @@ shinyApp(
               h4("Header 4"),
               h5("Header 5")
             ),
-            tabPanel("Tab 2"),
-            tabPanel("Tab 3")
+            tabPanel("Tab 2", "This panel is intentionally left blank"),
+            tabPanel("Tab 3", "This panel is intentionally left blank")
           )
         )
       ),
-      tabPanel("Navbar 2"),
-      tabPanel("Navbar 3")
+      tabPanel("Navbar 2", "This panel is intentionally left blank"),
+      tabPanel("Navbar 3", "This panel is intentionally left blank")
     )
   ),
   server = function(input, output) {

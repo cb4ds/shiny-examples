@@ -11,3 +11,15 @@
 
 # Fonts
 *.ttc
+
+# DS Store
+.DS_Store
+
+
+# Log Files
+logfile*.txt
+
+# Packrat lockfiles generated during RSC deploy
+packrat.lock
+
+169-prerender-a/index.html

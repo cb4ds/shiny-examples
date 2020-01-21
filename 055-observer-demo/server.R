@@ -1,10 +1,11 @@
 function(input, output, session) {
 
   # Create a random name for the log file
-  logfilename <- paste0('logfile',
-                        floor(runif(1, 1e+05, 1e+06 - 1)),
-                        '.txt')
+  logfilename <- tempfile('logfile', fileext = '.txt')
 
+  output$logfile <- renderText({
+    sprintf("Log file: %s", logfilename)
+  })
 
   # This observer adds an entry to the log file every time
   # input$n changes.
@@ -13,13 +14,9 @@ function(input, output, session) {
   })
 
 
-  # When the client ends the session, suspend the observer.
-  # Otherwise, the observer could keep running after the client
-  # ends the session.
   session$onSessionEnded(function() {
-    obs$suspend()
-
-    # Also clean up the log file for this example
+    # When the client ends the session, clean up the log file
+    # for this session.
     unlink(logfilename)
   })
 

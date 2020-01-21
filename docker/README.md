@@ -14,6 +14,14 @@ To build the Docker image, start in the shiny-examples directory and run:
 docker build -t ss-shiny-devel docker/
 ```
 
+If you are not on the master branch and would like to build with shiny-examples from your current branch, run:
+
+```sh
+ docker build --build-arg SHINY_EXAMPLES_BRANCH=$(git symbolic-ref --short -q HEAD) -t ss-shiny-devel .
+```
+
+This will tell it to install shiny-examples from your currently checked-out branch. (`git symbolic-ref --short -q HEAD` returns the name of the current branch.)
+
 ### Running the image
 
 Option 1: Run Shiny Server with the already-installed shiny-examples:
@@ -69,7 +77,7 @@ You must already have your rsconnect credentials set up in the host machine. Lau
 cd shiny-examples
 docker run --rm -ti --name deployer \
     -v "$(pwd)":/srv/shiny-server \
-    -v "$(Rscript -e 'cat(rsconnect:::rsconnectConfigDir())')":/root/.config/R/connect \
+    -v "$(Rscript -e 'cat(rsconnect:::rsconnectConfigDir())')":/root/.config/R/rsconnect \
     ss-shiny-devel /bin/bash
 ```
 
@@ -77,8 +85,8 @@ Once in the container, you can deploy apps with:
 
 ```sh
 cd /srv/shiny-server
-./deploy -d 116
+./deploy 111 116
 
 # Or, to deploy all
-./deploy -d --all
+./deploy --all
 ```

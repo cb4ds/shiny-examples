@@ -6,7 +6,7 @@ This is a collection of Shiny examples. You can see them in action on
 name of an example here, e.g. http://gallery.shinyapps.io/001-hello
 
 To run the examples locally, you can install the **shiny** package in R, and
-use the function `runGithub()`. For example, to run the example `001-hello`:
+use the function `runGitHub()`. For example, to run the example `001-hello`:
 
 ```R
 if (!require('shiny')) install.packages("shiny")
@@ -23,7 +23,3 @@ not end up in the final release, or they may also change according to the
 feedback.
 
 * [None]
-
-The example below requires the development version of [shinythemes](https://github.com/rstudio/shinythemes):
-
-* 117-shinythemes
